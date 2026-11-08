@@ -22,17 +22,10 @@ jobs:
           distribution: temurin
           java-version: "17"
 
-      - name: Set up Android SDK
-        uses: android-actions/setup-android-sdk@v3
-        with:
-          cmdline-tools-version: latest
-          packages: |
-            platform-tools
-            platforms;android-36
-            build-tools;36.0.0
-          licenses: |
-            24333f8a63b6825ea9c5514f83c2829b004d1fee
-            d56f5187479451eabf01fb78af6dfcb131a6481e
+      - name: Install Android SDK components
+        run: |
+          yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses > /dev/null
+          "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "platform-tools" "platforms;android-36" "build-tools;36.0.0"
 
       - name: Set up Gradle 8.14.2
         uses: gradle/actions/setup-gradle@v4
