@@ -6,3 +6,6 @@ local.properties
 .idea/
 .cxx/
 captures/
+
+# Build output (APK wordt expres gecommit voor download)
+!dist/app-debug.apk
