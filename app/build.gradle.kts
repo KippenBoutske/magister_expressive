@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "nl.vibe.magister"
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "nl.vibe.magister"

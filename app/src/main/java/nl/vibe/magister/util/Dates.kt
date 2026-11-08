@@ -2,6 +2,7 @@ package nl.vibe.magister.util
 
 import java.net.URLEncoder
 import java.time.Instant
+import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.OffsetDateTime
 import java.time.ZoneId
@@ -23,6 +24,9 @@ fun parseMagisterDate(raw: String?): OffsetDateTime? {
 }
 
 fun OffsetDateTime.hhmm(): String = format(DateTimeFormatter.ofPattern("HH:mm"))
+
+fun LocalDate.dayLabel(): String =
+    format(DateTimeFormatter.ofPattern("EEEE d MMMM", NL)).replaceFirstChar { it.uppercase(NL) }
 
 fun OffsetDateTime.dayLabel(): String =
     format(DateTimeFormatter.ofPattern("EEEE d MMMM", NL)).replaceFirstChar { it.uppercase(NL) }

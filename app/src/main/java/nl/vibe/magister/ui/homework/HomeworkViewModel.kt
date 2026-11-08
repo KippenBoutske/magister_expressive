@@ -42,7 +42,7 @@ class HomeworkViewModel(
             if (uiState !is UiState.Success) uiState = UiState.Loading
             refreshing = true
             try {
-                val from = now().toLocalDate().atStartDay(ZONE).toOffsetDateTime()
+                val from = now().toLocalDate().atStartOfDay(ZONE).toOffsetDateTime()
                 val to = from.plusDays(14)
                 uiState = UiState.Success(container.repository.homework(from, to))
             } catch (e: Exception) {

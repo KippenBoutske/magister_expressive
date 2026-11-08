@@ -25,12 +25,12 @@ jobs:
       - name: Install Android SDK components
         run: |
           yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses > /dev/null
-          "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "platform-tools" "platforms;android-36" "build-tools;36.0.0"
+          "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "platform-tools" "platforms;android-37" "build-tools;37.0.0"
 
       - name: Set up Gradle 8.14.2
         uses: gradle/actions/setup-gradle@v4
         with:
-          gradle-version: 8.14.2
+          gradle-version: 9.6.0
 
       - name: Cache Gradle
         uses: actions/cache@v4
@@ -44,7 +44,7 @@ jobs:
 
       - name: Generate wrapper and build debug APK
         run: |
-          gradle wrapper --gradle-version 8.14.2 --no-daemon
+          gradle wrapper --gradle-version 9.6.0 --no-daemon
           chmod +x gradlew
           ./gradlew assembleDebug --stacktrace
 

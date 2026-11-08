@@ -5,6 +5,7 @@ import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.animation.SharedTransitionScope
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -52,7 +53,6 @@ import nl.vibe.magister.ui.components.LoadingView
 import nl.vibe.magister.ui.haptics.confirm
 import nl.vibe.magister.ui.navigation.Screen
 import nl.vibe.magister.ui.shell.MagisterScaffold
-import nl.vibe.magister.util.ZONE
 import nl.vibe.magister.util.dayLabel
 import nl.vibe.magister.util.hhmm
 import nl.vibe.magister.util.now
@@ -187,8 +187,7 @@ private fun DayHeader(day: LocalDate, isToday: Boolean) {
     val label = if (isToday) {
         stringResource(R.string.today)
     } else {
-        parseMagisterDate(day.atStartDay(ZONE).toOffsetDateTime().toString())?.dayLabel()
-            ?: day.toString()
+        day.dayLabel()
     }
     Text(
         label,

@@ -56,7 +56,7 @@ class LiveUpdateHelper(private val context: Context) {
             .setRequestPromotedOngoing(true)
             .setStyle(
                 NotificationCompat.ProgressStyle()
-                    .setProgress(100, progress, false)
+                    .setProgress(progress)
                     .setProgressSegments(listOf(NotificationCompat.ProgressStyle.Segment(100)))
             )
 

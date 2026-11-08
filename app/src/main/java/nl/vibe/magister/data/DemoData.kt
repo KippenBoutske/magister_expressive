@@ -26,7 +26,7 @@ object DemoData {
 
     fun afspraken(): List<Afspraak> {
         val now = OffsetDateTime.now(ZONE)
-        val dayStart = now.toLocalDate().atStartDay(ZONE).toOffsetDateTime()
+        val dayStart = now.toLocalDate().atStartOfDay(ZONE).toOffsetDateTime()
 
         fun les(id: Long, from: OffsetDateTime, minutes: Long, vak: String, docent: String, locatie: String, opdracht: String? = null) =
             Afspraak(

@@ -24,7 +24,7 @@ class LessonProgressWorker(
         val session = app.container.sessionStore.session.value ?: return Result.success()
 
         val currentTime = now()
-        val from = currentTime.toLocalDate().atStartDay(ZONE).toOffsetDateTime()
+        val from = currentTime.toLocalDate().atStartOfDay(ZONE).toOffsetDateTime()
         val to = from.plusDays(1)
 
         val afspraken = runCatching { app.container.repository.afspraken(from, to) }

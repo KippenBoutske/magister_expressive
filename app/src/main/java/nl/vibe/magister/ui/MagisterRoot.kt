@@ -3,6 +3,8 @@ package nl.vibe.magister.ui
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.animation.SharedTransitionLayout
 import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInVertically
@@ -55,22 +57,22 @@ fun MagisterRoot(app: MagisterApp) {
                     navController = navController,
                     startDestination = if (session == null) Screen.Login else Screen.Home,
                     enterTransition = {
-                        fadeIn(animationSpec = MaterialTheme.motionScheme.defaultEffectsSpec) +
+                        fadeIn(animationSpec = tween(300)) +
                             slideInVertically(
                                 animationSpec = spring(dampingRatio = Spring.DampingRatioLowBouncy)
                             ) { it / 8 }
                     },
                     exitTransition = {
-                        fadeOut(animationSpec = MaterialTheme.motionScheme.defaultEffectsSpec)
+                        fadeOut(animationSpec = tween(250))
                     },
                     popEnterTransition = {
-                        fadeIn(animationSpec = MaterialTheme.motionScheme.defaultEffectsSpec) +
+                        fadeIn(animationSpec = tween(300)) +
                             slideInVertically(
                                 animationSpec = spring(dampingRatio = Spring.DampingRatioLowBouncy)
                             ) { -it / 8 }
                     },
                     popExitTransition = {
-                        fadeOut(animationSpec = MaterialTheme.motionScheme.defaultEffectsSpec)
+                        fadeOut(animationSpec = tween(250))
                     }
                 ) {
                     composable<Screen.Login> {
