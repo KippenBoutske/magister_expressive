@@ -1,9 +1,7 @@
 package nl.vibe.magister.ui.home
 
 import androidx.compose.animation.ExperimentalSharedTransitionApi
-import androidx.compose.animation.SharedContentState
 import androidx.compose.animation.SharedTransitionScope
-import androidx.compose.animation.rememberSharedContentState
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -23,13 +21,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.hapticfeedback.LocalHapticFeedback
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.animation.AnimatedVisibilityScope
 import nl.vibe.magister.R
 import nl.vibe.magister.data.model.Afspraak
 import nl.vibe.magister.ui.haptics.click
+import nl.vibe.magister.ui.haptics.rememberHaptics
 import nl.vibe.magister.util.hhmm
 import nl.vibe.magister.util.parseMagisterDate
 
@@ -41,7 +39,7 @@ fun LessonCard(
     animatedScope: AnimatedVisibilityScope,
     onClick: () -> Unit
 ) {
-    val haptics = LocalHapticFeedback.current
+    val haptics = rememberHaptics()
     val start = parseMagisterDate(afspraak.start)
     val end = parseMagisterDate(afspraak.einde)
     val title = afspraak.vak ?: afspraak.omschrijving ?: stringResource(R.string.lesson_label)
@@ -79,7 +77,7 @@ fun LessonCard(
                         style = MaterialTheme.typography.titleMedium,
                         modifier = Modifier.sharedBounds(
                             sharedContentState = rememberSharedContentState(
-                                key = SharedContentState.Key("lesson-${afspraak.id}")
+                                key = SharedTransitionScope.SharedContentState.Key("lesson-${afspraak.id}")
                             ),
                             animatedVisibilityScope = animatedScope
                         )

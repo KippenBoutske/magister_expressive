@@ -1,12 +1,39 @@
 package nl.vibe.magister.ui.haptics
 
-import androidx.compose.ui.hapticfeedback.HapticFeedback
-import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import android.os.Build
+import android.view.HapticFeedbackConstants
+import android.view.View
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.LocalView
 
-fun HapticFeedback.click() = performHapticFeedback(HapticFeedbackType.LongPress)
+class Haptics(private val view: View) {
 
-fun HapticFeedback.confirm() = performHapticFeedback(HapticFeedbackType.Confirm)
+    fun perform(constant: Int) = view.performHapticFeedback(constant)
+}
 
-fun HapticFeedback.reject() = performHapticFeedback(HapticFeedbackType.Reject)
+@Composable
+fun rememberHaptics(): Haptics = remember { Haptics(LocalView.current) }
 
-fun HapticFeedback.tick() = performHapticFeedback(HapticFeedbackType.SegmentTick)
+fun Haptics.click() = perform(HapticFeedbackConstants.LONG_PRESS)
+
+fun Haptics.confirm() {
+    perform(
+        if (Build.VERSION.SDK_INT >= 30) HapticFeedbackConstants.CONFIRM
+        else HapticFeedbackConstants.LONG_PRESS
+    )
+}
+
+fun Haptics.reject() {
+    perform(
+        if (Build.VERSION.SDK_INT >= 30) HapticFeedbackConstants.REJECT
+        else HapticFeedbackConstants.LONG_PRESS
+    )
+}
+
+fun Haptics.tick() {
+    perform(
+        if (Build.VERSION.SDK_INT >= 34) HapticFeedbackConstants.SEGMENT_TICK
+        else HapticFeedbackConstants.VIRTUAL_KEY
+    )
+}

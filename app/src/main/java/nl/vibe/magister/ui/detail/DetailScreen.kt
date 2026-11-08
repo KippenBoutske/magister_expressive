@@ -2,10 +2,8 @@ package nl.vibe.magister.ui.detail
 
 import androidx.compose.animation.AnimatedVisibilityScope
 import androidx.compose.animation.ExperimentalSharedTransitionApi
-import androidx.compose.animation.SharedContentState
 import androidx.compose.animation.SharedTransitionScope
 import androidx.compose.animation.animateContentSize
-import androidx.compose.animation.rememberSharedContentState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -35,12 +33,12 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.hapticfeedback.LocalHapticFeedback
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import nl.vibe.magister.R
 import nl.vibe.magister.ui.UiState
 import nl.vibe.magister.ui.haptics.click
+import nl.vibe.magister.ui.haptics.rememberHaptics
 import nl.vibe.magister.ui.haptics.confirm
 import nl.vibe.magister.ui.home.HomeViewModel
 import nl.vibe.magister.util.hhmm
@@ -55,7 +53,7 @@ fun DetailScreen(
     animatedScope: AnimatedVisibilityScope,
     onBack: () -> Unit
 ) {
-    val haptics = LocalHapticFeedback.current
+    val haptics = rememberHaptics()
     val state = homeViewModel.uiState
     val afspraak = (state as? UiState.Success)?.data?.firstOrNull { it.id == id }
 
@@ -69,7 +67,7 @@ fun DetailScreen(
                                 text = afspraak.vak ?: afspraak.omschrijving ?: "",
                                 modifier = Modifier.sharedBounds(
                                     sharedContentState = rememberSharedContentState(
-                                        key = SharedContentState.Key("lesson-$id")
+                                        key = SharedTransitionScope.SharedContentState.Key("lesson-$id")
                                     ),
                                     animatedVisibilityScope = animatedScope
                                 )

@@ -1,6 +1,7 @@
 package nl.vibe.magister.ui.shell
 
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CalendarMonth
 import androidx.compose.material.icons.filled.Grade
@@ -13,13 +14,12 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.TopAppBarScope
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.hapticfeedback.LocalHapticFeedback
 import androidx.compose.ui.res.stringResource
 import nl.vibe.magister.R
 import nl.vibe.magister.ui.haptics.tick
+import nl.vibe.magister.ui.haptics.rememberHaptics
 import nl.vibe.magister.ui.navigation.Screen
 
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
@@ -29,11 +29,11 @@ fun MagisterScaffold(
     current: Screen,
     onNavigate: (Screen) -> Unit,
     modifier: Modifier = Modifier,
-    actions: @Composable TopAppBarScope.() -> Unit = {},
+    actions: @Composable RowScope.() -> Unit = {},
     floatingActionButton: @Composable () -> Unit = {},
     content: @Composable (PaddingValues) -> Unit
 ) {
-    val haptics = LocalHapticFeedback.current
+    val haptics = rememberHaptics()
 
     Scaffold(
         modifier = modifier,

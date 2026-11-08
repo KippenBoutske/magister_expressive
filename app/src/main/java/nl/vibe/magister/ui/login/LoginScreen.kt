@@ -38,7 +38,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.hapticfeedback.LocalHapticFeedback
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -47,6 +46,7 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import nl.vibe.magister.R
 import nl.vibe.magister.ui.haptics.click
+import nl.vibe.magister.ui.haptics.rememberHaptics
 import nl.vibe.magister.ui.haptics.confirm
 import nl.vibe.magister.ui.haptics.reject
 
@@ -56,7 +56,7 @@ fun LoginScreen(
     viewModel: LoginViewModel,
     onLoggedIn: () -> Unit
 ) {
-    val haptics = LocalHapticFeedback.current
+    val haptics = rememberHaptics()
     var tenant by remember { mutableStateOf("") }
     var authUrl by remember { mutableStateOf<String?>(null) }
     val state = viewModel.uiState
@@ -172,7 +172,7 @@ private fun LoginWebViewDialog(
     onRedirect: (String) -> Boolean,
     onDismiss: () -> Unit
 ) {
-    val haptics = LocalHapticFeedback.current
+    val haptics = rememberHaptics()
 
     Dialog(
         onDismissRequest = onDismiss,

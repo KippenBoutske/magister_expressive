@@ -27,7 +27,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.PullToRefreshBox
+import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -35,7 +35,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.hapticfeedback.LocalHapticFeedback
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -46,6 +45,7 @@ import nl.vibe.magister.ui.components.EmptyView
 import nl.vibe.magister.ui.components.ErrorView
 import nl.vibe.magister.ui.components.LoadingView
 import nl.vibe.magister.ui.haptics.click
+import nl.vibe.magister.ui.haptics.rememberHaptics
 import nl.vibe.magister.ui.haptics.confirm
 import nl.vibe.magister.ui.navigation.Screen
 import nl.vibe.magister.ui.shell.MagisterScaffold
@@ -60,7 +60,7 @@ fun GradesScreen(
     onNavigate: (Screen) -> Unit,
     current: Screen
 ) {
-    val haptics = LocalHapticFeedback.current
+    val haptics = rememberHaptics()
     val state = viewModel.uiState
 
     MagisterScaffold(
@@ -183,7 +183,7 @@ private fun AverageCard(average: Double) {
 
 @Composable
 private fun GradeRow(cijfer: Cijfer) {
-    val haptics = LocalHapticFeedback.current
+    val haptics = rememberHaptics()
     val (container, onContainer) = gradeColors(cijfer.value)
     val date = parseMagisterDate(cijfer.datumInvoer)?.dayLabel()
 

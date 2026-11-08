@@ -20,11 +20,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.hapticfeedback.LocalHapticFeedback
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import nl.vibe.magister.R
 import nl.vibe.magister.ui.haptics.click
+import nl.vibe.magister.ui.haptics.rememberHaptics
 import nl.vibe.magister.ui.haptics.reject
 
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
@@ -41,7 +41,7 @@ fun ErrorView(
     onRetry: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val haptics = LocalHapticFeedback.current
+    val haptics = rememberHaptics()
     Box(modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
