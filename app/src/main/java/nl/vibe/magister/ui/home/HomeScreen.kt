@@ -49,6 +49,7 @@ import nl.vibe.magister.ui.UiState
 import nl.vibe.magister.ui.components.EmptyView
 import nl.vibe.magister.ui.components.ErrorView
 import nl.vibe.magister.ui.components.LoadingView
+import nl.vibe.magister.ui.haptics.click
 import nl.vibe.magister.ui.haptics.confirm
 import nl.vibe.magister.ui.haptics.rememberHaptics
 import nl.vibe.magister.ui.navigation.Screen

@@ -67,7 +67,7 @@ fun DetailScreen(
                                 text = afspraak.vak ?: afspraak.omschrijving ?: "",
                                 modifier = Modifier.sharedBounds(
                                     sharedContentState = rememberSharedContentState(
-                                        key = SharedTransitionScope.SharedContentState.Key("lesson-$id")
+                                        key = "lesson-$id"
                                     ),
                                     animatedVisibilityScope = animatedScope
                                 )

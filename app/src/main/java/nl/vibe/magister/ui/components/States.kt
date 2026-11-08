@@ -38,8 +38,8 @@ fun LoadingView(modifier: Modifier = Modifier) {
 @Composable
 fun ErrorView(
     message: String,
-    onRetry: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onRetry: () -> Unit
 ) {
     val haptics = rememberHaptics()
     Box(modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center) {

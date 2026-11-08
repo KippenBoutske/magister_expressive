@@ -13,7 +13,10 @@ class Haptics(private val view: View) {
 }
 
 @Composable
-fun rememberHaptics(): Haptics = remember { Haptics(LocalView.current) }
+fun rememberHaptics(): Haptics {
+    val view = LocalView.current
+    return remember(view) { Haptics(view) }
+}
 
 fun Haptics.click() = perform(HapticFeedbackConstants.LONG_PRESS)
 

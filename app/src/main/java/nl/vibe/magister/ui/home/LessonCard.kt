@@ -77,7 +77,7 @@ fun LessonCard(
                         style = MaterialTheme.typography.titleMedium,
                         modifier = Modifier.sharedBounds(
                             sharedContentState = rememberSharedContentState(
-                                key = SharedTransitionScope.SharedContentState.Key("lesson-${afspraak.id}")
+                                key = "lesson-${afspraak.id}"
                             ),
                             animatedVisibilityScope = animatedScope
                         )
