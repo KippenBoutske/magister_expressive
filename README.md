@@ -46,10 +46,14 @@ need to change.
 
 ## Build
 
-- JDK 17, Android Studio recent stable, `compileSdk 36`, `minSdk 26`, `targetSdk 36`
-- AGP `8.13.0`, Kotlin `2.2.20`, Compose BOM `2025.09.00`, material3 `1.4.0`, core-ktx `1.17.0`
-- Gradle wrapper is configured for Gradle `8.14.2`; if `gradlew`/`gradle-wrapper.jar` are
-  missing, run once locally: `gradle wrapper --gradle-version 8.14.2`
+- JDK 17, Android Studio recent stable, `compileSdk 37`, `minSdk 26`, `targetSdk 36`
+- AGP `9.4.0` (with `android.builtInKotlin=false` / `android.newDsl=false`), Kotlin `2.2.20`,
+  Compose BOM `2026.09.00` (Compose 1.12), material3 `1.5.0-beta01` (M3 Expressive is public from 1.5),
+  core-ktx `1.17.0`
+- Gradle wrapper is configured for Gradle `9.6.0`; if `gradlew`/`gradle-wrapper.jar` are
+  missing, run once locally: `gradle wrapper --gradle-version 9.6.0`
 - Then: `./gradlew assembleDebug` and run on a device/emulator (Live Updates need Android 16+)
+- CI: `.github/workflows/android-build.yml` builds the debug APK on every push/PR and uploads
+  it as the `app-debug-apk` artifact
 
 Sessions (tokens) are stored in app-private DataStore (`data/session/SessionStore.kt`).
