@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Magister Expressive</string>
+    <string name="login_title">Inloggen bij Magister</string>
+    <string name="login_subtitle">Gebruik de offici&#235;le Magister-login van jouw school</string>
+    <string name="tenant_hint">Schoolnaam (bijv. jouwschool)</string>
+    <string name="login_button">Inloggen via Magister</string>
+    <string name="demo_button">Demo modus</string>
+    <string name="login_error">Inloggen mislukt</string>
+    <string name="nav_agenda">Agenda</string>
+    <string name="nav_cijfers">Cijfers</string>
+    <string name="nav_huiswerk">Huiswerk</string>
+    <string name="live_update_channel">Live Updates</string>
+    <string name="live_update_channel_desc">Voortgang van de huidige les als Live Update</string>
+    <string name="open_app">Open app</string>
+    <string name="hide">Verberg</string>
+    <string name="now_playing">Nu bezig</string>
+    <string name="next_lessons">Komende lessen</string>
+    <string name="retry">Opnieuw</string>
+    <string name="empty_agenda">Geen afspraken gevonden</string>
+    <string name="empty_grades">Nog geen cijfers</string>
+    <string name="empty_homework">Geen huiswerk &#127881;</string>
+    <string name="average">Gemiddelde</string>
+    <string name="homework_label">Huiswerk</string>
+    <string name="lesson_label">Les</string>
+    <string name="start_live_update">Live Update starten</string>
+    <string name="logout">Uitloggen</string>
+    <string name="loading">Laden&#8230;</string>
+    <string name="today">Vandaag</string>
+</resources>
